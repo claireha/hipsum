@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hipster Lorem Ipsum</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two&family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="container text-center">
+
+		<h1>Hipster Lorem Ipsum Generator</h1>
+
+		<div id="intro">
+			<h2>What is Lorem Ipsum?</h2>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		</div>
+
+		<h2>Customize Your Hipsum:</h2>
+		<form action="/results" method="GET">
+			<label for="paras">How many paragraphs?</label>
+			<input type="number" value="<%=paras%>" name="paras" id="paras">
+
+			<% if(type === "hipster-latin"){ %>
+				<div class="switch-field">
+					<input type="radio" id="radio-one" name="type" value="hipster-centric"/>
+					<label for="radio-one">Hipster-Centric</label>
+					<input type="radio" id="radio-two" name="type" value="hipster-latin" checked/>
+					<label for="radio-two">Hipster Latin</label>
+				</div>
+
+			<% } else { %>
+				<div class="switch-field">
+					<input type="radio" id="radio-one" name="type" value="hipster-centric" checked/>
+					<label for="radio-one">Hipster-Centric</label>
+					<input type="radio" id="radio-two" name="type" value="hipster-latin" />
+					<label for="radio-two">Hipster Latin</label>
+				</div>
+			<% } %>
+
+			
+
+			<button>Go</button>
+		</form>
+
+		<div>
+			<h2>Here Ya Go:</h2>
+
+			<span id="result">
+			<%if(paras===0){%>
+				<p>Please choose a number larger than 0</p>
+			<%} else if (paras < 0){%>
+				<p>Please choose a positive number</p>
+			<%} else {%>
+				<% data.forEach(function(paragraph) { %>
+					<p><%= paragraph %></p>
+				<% }) %>
+				<%}%>
+			</span>
+		</div>
+	
+	</div>
+
+</body>
+</html>
